@@ -1,75 +1,82 @@
-# cubos-bank-api
+# Cubos Bank API
 
-Repositório de um projeto didático para compreender como funciona os princípios de uma API Restfull. Proposto pelo Curso de Desenvolvimento Backend da Cubos Academy
+Repositório de um projeto didático para compreender como funciona os princípios de uma API Restfull. Foi proposto pelo Curso de Desenvolvimento Backend da [Cubos Academy](https://cubos.academy/) como um projeto de um banco digital desenvolvido como parte do Desafio de Back-end do Módulo 2 na CUBOS.
 
-Cubos Bank API
-Bem-vindo(a) ao repositório da API do Cubos Bank! Este é um projeto de um banco digital desenvolvido como parte do Desafio de Back-end do Módulo 2 na CUBOS.
+# Descrição
+Esta é uma RESTful API para um Banco Digital. Neste projeto, foram implementadas as funcionalidades de listagem de contas bancárias, criação de contas, atualização de dados de usuário, depósito, saque, transferência entre contas, consulta de saldo e emissão de extrato bancário.
 
-Descrição
-Você foi contratado pela CUBOS para criar uma RESTful API para um Banco Digital. Neste projeto, você implementará funcionalidades como listagem de contas bancárias, criação de contas, atualização de dados de usuário, depósito, saque, transferência entre contas, consulta de saldo e emissão de extrato bancário.
+# Requisitos Obrigatórios
 
-Requisitos Obrigatórios
-Sua API segue o padrão REST.
-Seu código está organizado, com responsabilidades bem definidas para cada arquivo.
-A estrutura mínima inclui index.js, servidor.js, arquivo de rotas e pasta de controladores.
-Valores monetários são representados em centavos (Ex.: R$ 10,00 = 1000).
-Evite duplicação de código. Considere centralizar partes comuns em funções.
-Persistência dos Dados
-Os dados são mantidos em memória, no objeto bancodedados no arquivo bancodedados.js.
+* API segue o padrão REST.
+* Código organizado, com responsabilidades bem definidas para cada arquivo.
+* Valores monetários são representados em centavos (Ex.: R$ 10,00 = 1000).
+* Evite duplicação de código. Considere centralizar partes comuns em funções.
 
-Endpoints
-Listar contas bancárias
-GET /contas?senha_banco=123
+# Persistência dos Dados
+Os dados são mantidos em memória, no objeto **bancodedados** no arquivo **bancodedados.js**.
 
-Este endpoint lista todas as contas bancárias existentes.
+# Endpoints
 
-Entrada (query params)
+## Listar contas bancárias
+**`GET /contas?senha_banco=123`**
 
-Senha do banco
-Saída
+* Este endpoint lista todas as contas bancárias existentes.
 
-Lista de contas bancárias existentes ou array vazio se não houver contas.
+### Entrada (query params)
 
-Criar conta bancária
-POST /contas
+Senha do Banco
 
-Este endpoint cria uma nova conta bancária, gerando um número único para identificação.
+### Saída
 
-Entrada
+* Lista de contas bancárias existentes ou array vazio se não houver contas.
 
-Nome
-CPF
-Data de Nascimento
-Telefone
-Email
-Senha
-Saída
+## Criar conta bancária
+**`POST /contas`**
+
+* Este endpoint cria uma nova conta bancária, gerando um número único para identificação.
+
+### Entrada
+
+* Nome
+* CPF
+* Data de Nascimento
+* Telefone
+* Email
+* Senha
+
+  
+### Saída
 
 Dados do usuário, número da conta e saldo.
 
-Atualizar usuário da conta bancária
-PUT /contas/:numeroConta/usuario
+## Atualizar usuário da conta bancária
 
-Este endpoint atualiza os dados do usuário de uma conta bancária.
+**`PUT /contas/:numeroConta/usuario`**
 
-Entrada
+* Este endpoint atualiza os dados do usuário de uma conta bancária.
 
-Um ou mais campos do usuário (Nome, CPF, Data de Nascimento, Telefone, Email, Senha)
-Excluir Conta
-DELETE /contas/:numeroConta
+### Entrada
 
-Este endpoint exclui uma conta bancária existente.
+* Um ou mais campos do usuário **(Nome, CPF, Data de Nascimento, Telefone, Email, Senha)**
 
-Depositar
-POST /transacoes/depositar
+## Excluir Conta
 
-Este endpoint realiza um depósito em uma conta bancária.
+**`DELETE /contas/:numeroConta`**
 
-Entrada
+* Este endpoint exclui uma conta bancária existente.
 
-Número da conta
-Valor
-Sacar
+## Depositar
+
+**`POST /transacoes/depositar`**
+
+* Este endpoint realiza um depósito em uma conta bancária.
+
+### Entrada
+
+* Número da conta
+* Valor
+* Sacar
+  
 POST /transacoes/sacar
 
 Este endpoint realiza um saque em uma conta bancária.
