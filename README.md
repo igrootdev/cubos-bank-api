@@ -20,20 +20,20 @@ Os dados são mantidos em memória, no objeto **bancodedados** no arquivo **banc
 ## Listar contas bancárias
 **`GET /contas?senha_banco=123`**
 
-* Este endpoint lista todas as contas bancárias existentes.
+Este endpoint lista todas as contas bancárias existentes.
 
 ### Entrada (query params)
 
-Senha do Banco
+* Senha do Banco
 
 ### Saída
 
-* Lista de contas bancárias existentes ou array vazio se não houver contas.
+Lista de contas bancárias existentes ou array vazio se não houver contas.
 
 ## Criar conta bancária
 **`POST /contas`**
 
-* Este endpoint cria uma nova conta bancária, gerando um número único para identificação.
+Este endpoint cria uma nova conta bancária, gerando um número único para identificação.
 
 ### Entrada
 
@@ -43,98 +43,108 @@ Senha do Banco
 * Telefone
 * Email
 * Senha
-
   
 ### Saída
-
 Dados do usuário, número da conta e saldo.
 
 ## Atualizar usuário da conta bancária
 
 **`PUT /contas/:numeroConta/usuario`**
 
-* Este endpoint atualiza os dados do usuário de uma conta bancária.
+Este endpoint atualiza os dados do usuário de uma conta bancária.
 
 ### Entrada
 
-* Um ou mais campos do usuário **(Nome, CPF, Data de Nascimento, Telefone, Email, Senha)**
+Um ou mais campos do usuário **(Nome, CPF, Data de Nascimento, Telefone, Email, Senha)**
 
 ## Excluir Conta
 
 **`DELETE /contas/:numeroConta`**
 
-* Este endpoint exclui uma conta bancária existente.
+Este endpoint exclui uma conta bancária existente.
 
 ## Depositar
 
 **`POST /transacoes/depositar`**
 
-* Este endpoint realiza um depósito em uma conta bancária.
+Este endpoint realiza um depósito em uma conta bancária.
 
 ### Entrada
 
 * Número da conta
 * Valor
 * Sacar
+
+## Sacar valores 
   
-POST /transacoes/sacar
+**`POST /transacoes/sacar`**
 
 Este endpoint realiza um saque em uma conta bancária.
 
-Entrada
+### Entrada
 
-Número da conta
-Valor
-Senha
-Transferir
-POST /transacoes/transferir
+* Número da conta
+* Valor
+* Senha
+
+  
+## Transferir valores entre contas
+
+**`POST /transacoes/transferir`**
 
 Este endpoint permite a transferência de recursos entre contas bancárias.
 
-Entrada
+### Entrada
 
-Número da conta de origem
-Senha da conta de origem
-Valor
-Número da conta de destino
-Saldo
-GET /contas/saldo?numero_conta=123&senha=123
+* Número da conta de origem
+* Senha da conta de origem
+* Valor
+* Número da conta de destino
+
+## Saldo 
+
+**`GET /contas/saldo?numero_conta=123&senha=123`**
 
 Este endpoint retorna o saldo de uma conta bancária.
 
-Entrada (query params)
+### Entrada (query params)
 
-Número da conta
-Senha
-Saída
+* Número da conta
+* Senha
 
-Saldo da conta.
+### Saída
 
-Extrato
-GET /contas/extrato?numero_conta=123&senha=123
+* Saldo da conta.
+
+## Extrato
+
+**`GET /contas/extrato?numero_conta=123&senha=123`**
 
 Este endpoint lista as transações realizadas de uma conta específica.
 
-Entrada (query params)
+### Entrada (query params)
 
-Número da conta
-Senha
-Saída
+* Número da conta
+* Senha
 
-Relatório das transações (depósitos, saques, transferências enviadas e recebidas).
+### Saída
 
-Status Code
+Relatório das transações **(depósitos, saques, transferências enviadas e recebidas)**.
+
+# Status Code
+
 A API pode retornar os seguintes status codes:
 
-200: Requisição bem sucedida
-201: Requisição bem sucedida e algo foi criado
-400: Erro de requisição inválida
-404: Recurso não encontrado
-Como Usar
-Clone este repositório.
-Instale as dependências: npm install
-Inicie o servidor: npm start
-Atenção
-Este é um projeto piloto e mais funcionalidades serão implementadas no futuro. Dados do banco são imutáveis.
+* 200: Requisição bem sucedida
+* 201: Requisição bem sucedida e algo foi criado
+* 400: Erro de requisição inválida
+* 404: Recurso não encontrado
+
+  
+# Como Usar
+
+* Clone este repositório.
+* Instale as dependências: **`npm install`**
+* Inicie o servidor: **`npm run dev`**
 
 Divirta-se codificando e criando a API do Cubos Bank! 🚀
